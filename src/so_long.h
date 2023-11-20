@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/20 17:42:28 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:46:17 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 
 // # include <stdio.h> //PARA PRINTF. BORRAR 
+#include <fcntl.h> //PARA OPEN. BORRAR
 
 typedef struct s_win
 {
