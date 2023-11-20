@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/20 17:26:41 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:42:49 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	close_window(int keycode, t_win *prog)
 
 int	key_hook(int keycode, t_win *prog)
 {
-	printf("Hello from key_hook! %i %p %p \n", keycode, prog->mlx_ptr, prog->win_ptr);
+	ft_printf("Hello from key_hook! %i %p %p \n", keycode, prog->mlx_ptr, prog->win_ptr);
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int	main(void)
 	//Leemos una imagen
 	img.img = mlx_xpm_file_to_image(prog.mlx_ptr, BACKGROUND, &img.img_width, &img.img_height);
 	if (img.img == NULL)
-		printf("Error al leer la imagen\n");
+		ft_printf("Error al leer la imagen\n");
 	while (y < 300 )
 	{
 		x = 0;
@@ -82,7 +82,7 @@ int	main(void)
 		y++;
 	}
 	img.img = mlx_xpm_file_to_image(prog.mlx_ptr, WALL, &img.img_width, &img.img_height);
-	printf ("img_width, img_height: %d, %d\n", img.img_width, img.img_height);
+	ft_printf ("img_width, img_height: %d, %d\n", img.img_width, img.img_height);
 	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 0);
 	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 1 * img.img_height);
 	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 2 * img.img_height);
