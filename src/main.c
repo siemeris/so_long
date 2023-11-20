@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/20 12:16:21 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:26:41 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,12 @@ int	main(void)
 		}
 		y++;
 	}
+	img.img = mlx_xpm_file_to_image(prog.mlx_ptr, WALL, &img.img_width, &img.img_height);
+	printf ("img_width, img_height: %d, %d\n", img.img_width, img.img_height);
+	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 0);
+	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 1 * img.img_height);
+	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 2 * img.img_height);
+	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 3 * img.img_height);
 	
 
 	mlx_loop(prog.mlx_ptr); //Renderizamos la ventana

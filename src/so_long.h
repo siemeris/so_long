@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/20 12:14:49 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:02:31 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ typedef struct	s_data {
 
 
 # define BACKGROUND "./assets/background.xpm"
+# define WALL "./assets/wooden.xpm"
+
 
 #endif
