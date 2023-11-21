@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 10:03:03 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:16:14 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 // # include <stdio.h> //PARA PRINTF. BORRAR 
 #include <fcntl.h> //PARA OPEN. BORRAR
 
-typedef struct s_win
-{
-	void	*mlx_ptr; //puntero a la conexion con el servidor grafico
-	void	*win_ptr; //puntero a la ventana
-}		t_win;
+// typedef struct s_win
+// {
+// 	void	*mlx_ptr; //puntero a la conexion con el servidor grafico
+// 	void	*win_ptr; //puntero a la ventana
+// }		t_win;
 
 typedef struct	s_data {
+    void	*mlx_ptr; //puntero a la conexion con el servidor grafico
+    void	*win_ptr; //puntero a la ventana
 	void	*img; //puntero a la imagen
 	char	*addr; //puntero al primer byte de la imagen en la memoria
 	int		bits_per_pixel; //numero de bits usados para representar un pixel en la memoria

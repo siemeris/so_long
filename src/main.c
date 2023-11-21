@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 10:02:11 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:15:16 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	close_window(int keycode, t_win *prog)
+int	close_window(int keycode, t_data *prog)
 {
 	if (keycode == 53)
 		mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	return (0);
 }
 
-int	key_hook(int keycode, t_win *prog)
+int	key_hook(int keycode, t_data *prog)
 {
 	ft_printf("Hello from key_hook! %i %p %p \n", keycode, prog->mlx_ptr, prog->win_ptr);
 	return (0);
@@ -104,8 +104,8 @@ char **check_file(char *file)
 
 int	main(int argc, char **argv)
 {
-	t_win	prog;
-	t_data	img;
+	// t_win	prog;
+	t_data	data;
 
 	//para las imagenes
 	// int		img_width;
@@ -125,24 +125,22 @@ int	main(int argc, char **argv)
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);
 	
 	//COMPROBAMOS MAPA
-	img.map_read=check_file(argv[1]);
-	if (!img.map_read)
+	data.map_read=check_file(argv[1]);
+	if (!data.map_read)
 		return (0);
-	if (!check_map(&img))
+	if (!check_map(&data))
 	 	return (0);
 
-	//CREAMOS MAPA CON LAS IMAGENES
-	ft_printf("img.map_read: %s\n", img.map_read[0]);
+	////CREAMOS MAPA CON LAS IMAGENES
+	ft_printf("img.map_read: %s\n", data.map_read[0]);
 
-
-	
 	//CREAMOS LA VENTANA
-	prog.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
-	prog.win_ptr = mlx_new_window(prog.mlx_ptr, 300, 300, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
+	data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 300, 300, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
 	
 	//EVENTOS
-	mlx_hook(prog.win_ptr, 2, 1L<<0, close_window, &prog);
-	mlx_key_hook(prog.win_ptr, key_hook, &prog);
+	mlx_hook(data.win_ptr, 2, 1L<<0, close_window, &data);
+	mlx_key_hook(data.win_ptr, key_hook, &data);
 	// img.img = mlx_new_image(prog.mlx_ptr, 300, 300); //Creamos una imagen y guardamos el puntero en img.img
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian); //mlx_get_data_addr devuelve la direccion de memoria de la imagen
 	// printf("bits_per_pixeel, line_length, endian: %d, %d, %d\n", img.bits_per_pixel, img.line_length, img.endian); //32 (4 bytes), 1200 (4bytes * 300), 0
@@ -153,26 +151,26 @@ int	main(int argc, char **argv)
 	// mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 0);
 
 	//IMAGENES
-	img.img = mlx_xpm_file_to_image(prog.mlx_ptr, BACKGROUND, &img.img_width, &img.img_height);
-	if (img.img == NULL)
+	data.img = mlx_xpm_file_to_image(data.mlx_ptr, BACKGROUND, &data.img_width, &data.img_height);
+	if (data.img == NULL)
 		ft_printf("Error al leer la imagen\n");
 	while (y < 300 )
 	{
 		x = 0;
 		while (x < 300)
 		{
-			mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, x, y);
+			mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x, y);
 			x++;
 		}
 		y++;
 	}
-	img.img = mlx_xpm_file_to_image(prog.mlx_ptr, WALL, &img.img_width, &img.img_height);
-	ft_printf ("img_width, img_height: %d, %d\n", img.img_width, img.img_height);
-	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 0);
-	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 1 * img.img_height);
-	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 2 * img.img_height);
-	mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 3 * img.img_height);
+	data.img = mlx_xpm_file_to_image(data.mlx_ptr, WALL, &data.img_width, &data.img_height);
+	ft_printf ("img_width, img_height: %d, %d\n", data.img_width, data.img_height);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 0);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 1 * data.img_height);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 2 * data.img_height);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 3 * data.img_height);
 	
 
-	mlx_loop(prog.mlx_ptr); //Renderizamos la ventana
+	mlx_loop(data.mlx_ptr); //Renderizamos la ventana
 }
