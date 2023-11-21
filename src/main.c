@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/20 18:55:11 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:44:36 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,73 @@ int	key_hook(int keycode, t_win *prog)
 	return (0);
 }
 
-int read_map()
+//leemos la info del archivo. MEJORA: HACERLO CON GET_NEXT_LINE
+char **read_map(int fd, t_data *data)
 {
+	int		numbytes;
+	char	*buffer;
+
+
+	buffer = (char *)ft_calloc(BUFFER + 1, sizeof(char));
+	if (!buffer)
+		return (0);
 	ft_printf("Hello from read_map!\n");
-	return (0);
+	numbytes = read(fd, buffer ,BUFFER); 
+	if (numbytes < 0)
+	{
+		ft_printf("Error al leer el archivo\n");
+		free(buffer);
+		return (0);
+	}
+	ft_printf("numbytes: %d\n", numbytes);
+	ft_printf("buffer: %s\n", buffer);
+	data->map_read = ft_split(buffer, '\n');
+	// ft_printf("data->map_read: %s\n", data->map_read[0]);
+	if (!data->map_read)
+	{
+		ft_printf("Error al leer el archivo\n");
+		free(buffer);
+		return (0);
+	}
+	// close(fd);
+	return (data->map_read);
 }
 
-int	check_file(char *file)
+int check_map(t_data *data)
+{
+	int		i;
+	size_t		len;
+
+	i = 0;
+	len = ft_strlen(data->map_read[0]);
+	while (data->map_read[i])
+	{
+		if (ft_strlen(data->map_read[i]) != len)
+		{
+			ft_printf("Error\nMAPA INVALIDO\n");
+			return (0);
+		}
+		i++;
+	}
+	ft_printf("MAPA VALIDO\n");
+	return (1);
+}
+
+char **check_file(char *file)
 {
 	int		fd;
+	t_data	data;
+	// t_data	*data_ptr = NULL;
 
 	ft_printf("Hello from check_file! %s\n", file);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	read_map();
+	if (!read_map(fd, &data))
+	 	return (0);
+	// ft_printf("data.map_read en check file: %s\n", data.map_read[2]);
 	close(fd);
-	return (1);
+	return (data.map_read);
 }
 
 int	main(int argc, char **argv)
@@ -73,13 +123,21 @@ int	main(int argc, char **argv)
 	y = 0;
 
 	//COMPROBAMOS ARGUMENTOS
-	if (argc != 2 || !check_file(argv[1]))
+	if (argc != 2)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
-
+	//ft_printf("data.map_read: %s\n", data.map_read[0]);
 	//COMPROBAMOS MAPA
-	// if (!check_map())
+	img.map_read=check_file(argv[1]);
+	if (!img.map_read)
+		return (0);
+	check_map(&img);
+
+	//CREAMOS MAPA CON LAS IMAGENES
+	ft_printf("img.map_read: %s\n", img.map_read[0]);
+	// if (!check_map(&data))
 	// 	return (0);
 
+	
 	//CREAMOS LA VENTANA
 	prog.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
 	prog.win_ptr = mlx_new_window(prog.mlx_ptr, 300, 300, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
