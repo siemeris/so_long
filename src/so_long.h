@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 08:46:44 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:03:03 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct	s_data {
     int		img_width; //ancho de la imagen
     int		img_height; //alto de la imagen
     char    **map_read; //mapa leido del fichero
+    size_t  map_width; //ancho del mapa
+    size_t  map_height; //alto del mapa
 }				t_data;
 
 

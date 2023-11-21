@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 09:44:36 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:02:11 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,16 @@ char **read_map(int fd, t_data *data)
 
 int check_map(t_data *data)
 {
-	int		i;
-	size_t		len;
-
-	i = 0;
-	len = ft_strlen(data->map_read[0]);
-	while (data->map_read[i])
+	data->map_height = 0;
+	data->map_width = ft_strlen(data->map_read[0]);
+	while (data->map_read[data->map_height])
 	{
-		if (ft_strlen(data->map_read[i]) != len)
+		if (ft_strlen(data->map_read[data->map_height]) != data->map_width)
 		{
 			ft_printf("Error\nMAPA INVALIDO\n");
 			return (0);
 		}
-		i++;
+		data->map_height++;
 	}
 	ft_printf("MAPA VALIDO\n");
 	return (1);
@@ -126,16 +123,17 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);
+	
 	//COMPROBAMOS MAPA
 	img.map_read=check_file(argv[1]);
 	if (!img.map_read)
 		return (0);
-	check_map(&img);
+	if (!check_map(&img))
+	 	return (0);
 
 	//CREAMOS MAPA CON LAS IMAGENES
 	ft_printf("img.map_read: %s\n", img.map_read[0]);
-	// if (!check_map(&data))
-	// 	return (0);
+
 
 	
 	//CREAMOS LA VENTANA
