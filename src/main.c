@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 12:57:09 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:59:14 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,19 +104,13 @@ char **check_file(char *file)
 
 void	put_img(int x, int y, t_data data, char *path)
 {
-	// int	img_w;
-	// int	img_h;
-
-
 	data.img = mlx_xpm_file_to_image(data.mlx_ptr, path, &data.img_width, &data.img_height);
-	ft_printf ("img_width , img_height: %d, %d\n", data.img_width, data.img_height);
+	//ft_printf ("img_width , img_height: %d, %d\n", data.img_width, data.img_height);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x * IMG_WIDTH, y * IMG_HEIGHT);
 
 	// data->map->img = mlx_xpm_file_to_image(data->mlx, path, &img_w, &img_h);
 	// mlx_put_image_to_window(data->mlx, data->win, data->map->img, \
 	// (x * H_IMG), (y * W_IMG));
-
-
 }
 
 
@@ -131,11 +125,11 @@ int	main(int argc, char **argv)
 	// char	*img_addr = "./assets/wooden.xpm";
 	// void	*img_ptr;
 
-	size_t		x;
-	size_t		y;
+	size_t		w;
+	size_t		h;
 
-	x = 0;
-	y = 0;
+	w = 0;
+	h = 0;
 
 	//COMPROBAMOS ARGUMENTOS
 	if (argc != 2)
@@ -155,17 +149,16 @@ int	main(int argc, char **argv)
 	//CREAMOS LA VENTANA
 	data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.map_width * IMG_WIDTH, data.map_height * IMG_HEIGHT, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
-	ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
+	//ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
 	//IMAGENES
-	while (y < data.map_height)
+	while (h < data.map_height)
 	{
-		while (x < data.map_width)
+		while (w < data.map_width)
 		{
-			put_img(x, y, data, BACKGROUND);
-			if (data.map_read[y][x] == '1')
+			put_img(w, h, data, BACKGROUND);
+			if (data.map_read[h][w] == '1')
 			{
-				ft_printf("map_read[y]: %s\n", data.map_read[y]);
-				put_img(x, y, data, WALL);
+				put_img(w, h, data, WALL);
 				// ft_printf("WALL y x %i %i \n", y, x);
 			}
 			// else if (data.map_read[y][x] == 'C')
@@ -174,10 +167,10 @@ int	main(int argc, char **argv)
 			// 	put_img(x, y, data, EXIT);
 			// else if (data.map_read[y][x] == 'P')
 			// 	put_player(x, y, data);
-			x++;
+			w++;
 		}
-		x = 0;
-		y++;
+		w = 0;
+		h++;
 	}
 
 
