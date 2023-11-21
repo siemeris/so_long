@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 10:15:16 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:57:09 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,24 @@ char **check_file(char *file)
 	return (data.map_read);
 }
 
+void	put_img(int x, int y, t_data data, char *path)
+{
+	// int	img_w;
+	// int	img_h;
+
+
+	data.img = mlx_xpm_file_to_image(data.mlx_ptr, path, &data.img_width, &data.img_height);
+	ft_printf ("img_width , img_height: %d, %d\n", data.img_width, data.img_height);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x * IMG_WIDTH, y * IMG_HEIGHT);
+
+	// data->map->img = mlx_xpm_file_to_image(data->mlx, path, &img_w, &img_h);
+	// mlx_put_image_to_window(data->mlx, data->win, data->map->img, \
+	// (x * H_IMG), (y * W_IMG));
+
+
+}
+
+
 int	main(int argc, char **argv)
 {
 	// t_win	prog;
@@ -113,8 +131,8 @@ int	main(int argc, char **argv)
 	// char	*img_addr = "./assets/wooden.xpm";
 	// void	*img_ptr;
 
-	int		x;
-	int		y;
+	size_t		x;
+	size_t		y;
 
 	x = 0;
 	y = 0;
@@ -136,7 +154,53 @@ int	main(int argc, char **argv)
 
 	//CREAMOS LA VENTANA
 	data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 300, 300, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.map_width * IMG_WIDTH, data.map_height * IMG_HEIGHT, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
+	ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
+	//IMAGENES
+	while (y < data.map_height)
+	{
+		while (x < data.map_width)
+		{
+			put_img(x, y, data, BACKGROUND);
+			if (data.map_read[y][x] == '1')
+			{
+				ft_printf("map_read[y]: %s\n", data.map_read[y]);
+				put_img(x, y, data, WALL);
+				// ft_printf("WALL y x %i %i \n", y, x);
+			}
+			// else if (data.map_read[y][x] == 'C')
+			// 	put_img(x, y, data, COLLECT);
+			// else if (data.map_read[y][x] == 'E')
+			// 	put_img(x, y, data, EXIT);
+			// else if (data.map_read[y][x] == 'P')
+			// 	put_player(x, y, data);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+
+
+	// data.img = mlx_xpm_file_to_image(data.mlx_ptr, BACKGROUND, &data.img_width, &data.img_height);
+	// ft_printf ("BACKG img_width , img_height: %d, %d\n", data.img_width, data.img_height);
+	// if (data.img == NULL)
+	// 	ft_printf("Error al leer la imagen\n");
+	// while (y < 300 )
+	// {
+	// 	x = 0;
+	// 	while (x < 300)
+	// 	{
+	// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x, y);
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
+	// data.img = mlx_xpm_file_to_image(data.mlx_ptr, WALL, &data.img_width, &data.img_height);
+	// ft_printf ("img_width , img_height: %d, %d\n", data.img_width, data.img_height);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 0);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 1 * data.img_height);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 2 * data.img_height);
+	// mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 3 * data.img_height);
 	
 	//EVENTOS
 	mlx_hook(data.win_ptr, 2, 1L<<0, close_window, &data);
@@ -150,27 +214,6 @@ int	main(int argc, char **argv)
 	// my_mlx_pixel_put(&img, 15, 15, 0x00F6FC57); 
 	// mlx_put_image_to_window(prog.mlx_ptr, prog.win_ptr, img.img, 0, 0);
 
-	//IMAGENES
-	data.img = mlx_xpm_file_to_image(data.mlx_ptr, BACKGROUND, &data.img_width, &data.img_height);
-	if (data.img == NULL)
-		ft_printf("Error al leer la imagen\n");
-	while (y < 300 )
-	{
-		x = 0;
-		while (x < 300)
-		{
-			mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x, y);
-			x++;
-		}
-		y++;
-	}
-	data.img = mlx_xpm_file_to_image(data.mlx_ptr, WALL, &data.img_width, &data.img_height);
-	ft_printf ("img_width, img_height: %d, %d\n", data.img_width, data.img_height);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 0);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 1 * data.img_height);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 2 * data.img_height);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, 0, 3 * data.img_height);
-	
 
 	mlx_loop(data.mlx_ptr); //Renderizamos la ventana
 }

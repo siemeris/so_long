@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/21 10:16:14 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:57:04 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ typedef struct	s_data {
 }				t_data;
 
 
-# define BACKGROUND "./assets/background.xpm"
-# define WALL "./assets/wooden.xpm"
+# define BACKGROUND "./assets/grass5050.xpm"
+# define WALL "./assets/tree50x50transparent.xpm"
 # define BUFFER 1000
+# define IMG_WIDTH 50
+# define IMG_HEIGHT 50
+
 
 
 #endif
