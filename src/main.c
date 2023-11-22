@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 15:49:33 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:03:31 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,9 +245,18 @@ int	go_up(t_data *prog)
 	
 	if (prog->map_read[prog->player_y - 1][prog->player_x] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'E')
+	{
+		if (prog->exit == 1)
+			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		return (0);
+	
+	}
 	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'C')
 	{	
 		prog->collect--;
+		if (prog->collect == 0)
+			prog->exit=1;
 		ft_printf("collect: %d\n", prog->collect);
 	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
@@ -267,9 +276,18 @@ int	go_down(t_data *prog)
 	
 	if (prog->map_read[prog->player_y + 1][prog->player_x] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'E')
+	{
+		if (prog->exit == 1)
+			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		return (0);
+	
+	}
 	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'C')
 	{	
 		prog->collect--;
+		if (prog->collect == 0)
+			prog->exit=1;
 		ft_printf("collect: %d\n", prog->collect);
 	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
@@ -289,9 +307,18 @@ int	go_right(t_data *prog)
 	
 	if (prog->map_read[prog->player_y][prog->player_x + 1] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'E')
+	{
+		if (prog->exit == 1)
+			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		return (0);
+	
+	}
 	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'C')
 	{	
-		// prog->check_map->collect--;
+		prog->collect--;
+		if (prog->collect == 0)
+			prog->exit=1;
 		ft_printf("prog->collect: %d\n", prog->collect);
 	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
@@ -312,9 +339,18 @@ int	go_left(t_data *prog)
 	
 	if (prog->map_read[prog->player_y][prog->player_x - 1] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'E')
+	{
+		if (prog->exit == 1)
+			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		return (0);
+	
+	}
 	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'C')
 	{	
 		prog->collect--;
+		if (prog->collect == 0)
+			prog->exit=1;
 		ft_printf("collect: %d\n", prog->collect);
 	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
@@ -372,9 +408,10 @@ int	main(int argc, char **argv)
 	////CREAMOS MAPA CON LAS IMAGENES
 	ft_printf("img.map_read: %s\n", data.map_read[0]);
 
-	//INICIALIZAMOS CONTADOR DE MOVIMIENTOS y PLAYER
+	//INICIALIZAMOS CONTADOR DE MOVIMIENTOS, PLAYER y EXIT
 	data.moves = 0;
 	data.img_path = PLAYER;
+	data.exit = 0;
 	//CREAMOS LA VENTANA
 	// data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
 	// data.win_ptr = mlx_new_window(data.mlx_ptr, data.map_width * IMG_WIDTH, data.map_height * IMG_HEIGHT, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
