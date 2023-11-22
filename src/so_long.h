@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 12:06:14 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:10:37 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_data {
     int     player_y; //posicion y del jugador
     int     moves; //numero de movimientos del jugador
     char   *img_path; //ruta de la imagen
+    int     collect; //numero de coleccionables
 }				t_data;
 
 

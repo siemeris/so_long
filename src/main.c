@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 12:19:25 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:12:11 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ int check_map(t_data *data)
 
 	//COMPROBAR CAMINO VALIDO
 
+	//PRUEBA COLLECT
+	data->collect = check.collect;
 
 	ft_printf("MAPA VALIDO\n");
 	return (1);
@@ -243,6 +245,11 @@ int	go_up(t_data *prog)
 	
 	if (prog->map_read[prog->player_y - 1][prog->player_x] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'C')
+	{	
+		prog->collect--;
+		ft_printf("collect: %d\n", prog->collect);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y - 1][prog->player_x] = 'P';
 	prog->moves++;
@@ -260,6 +267,11 @@ int	go_down(t_data *prog)
 	
 	if (prog->map_read[prog->player_y + 1][prog->player_x] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'C')
+	{	
+		prog->collect--;
+		ft_printf("collect: %d\n", prog->collect);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y + 1][prog->player_x] = 'P';
 	prog->moves++;
@@ -277,6 +289,11 @@ int	go_right(t_data *prog)
 	
 	if (prog->map_read[prog->player_y][prog->player_x + 1] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'C')
+	{	
+		// prog->check_map->collect--;
+		ft_printf("prog->collect: %d\n", prog->collect);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y][prog->player_x + 1] = 'P';
 	prog->moves++;
@@ -294,6 +311,11 @@ int	go_left(t_data *prog)
 	
 	if (prog->map_read[prog->player_y][prog->player_x - 1] == '1')
 		return (0);
+	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'C')
+	{	
+		prog->collect--;
+		ft_printf("collect: %d\n", prog->collect);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y][prog->player_x - 1] = 'P';
 	prog->moves++;
