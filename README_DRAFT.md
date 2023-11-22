@@ -6,17 +6,8 @@ la MinilibX es una biblioteca gráfica minimalista diseñada para facilitar el d
 
 La MinilibX es conocida por ser ligera y proporcionar las funciones básicas necesarias para la creación de ventanas, manipulación de imágenes y gestión de eventos de entrada. Es comúnmente utilizada en proyectos académicos y en entornos donde se busca una solución simple y eficiente para la representación gráfica.
 
-
-
-<p align="center">
-	<img src="https://img.shields.io/badge/status-finished-success?color=%2312bab9&style=flat-square" />
-	<img src="https://img.shields.io/badge/evaluated-21%20%2F%2001%20%2F%202023-success?color=%2312bab9&style=flat-square" />
-	<img src="https://img.shields.io/badge/score-125%20%2F%20100-success?color=%2312bab9&style=flat-square" />
-	<img src="https://img.shields.io/github/languages/top/jotavare/so_long?color=%2312bab9&style=flat-square" />
-	<img src="https://img.shields.io/github/last-commit/jotavare/so_long?color=%2312bab9&style=flat-square" />
-	<a href='https://www.linkedin.com/in/joaoptoliveira' target="_blank"><img alt='Linkedin' src='https://img.shields.io/badge/LinkedIn-100000?style=flat-square&logo=Linkedin&logoColor=white&labelColor=0A66C2&color=0A66C2'/></a>
-	<a href='https://profile.intra.42.fr/users/jotavare' target="_blank"><img alt='42' src='https://img.shields.io/badge/Porto-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000'/></a>
-</p>
+### Algortimo de Flood Fill
+El algoritmo de relleno de inundación (también conocido como algoritmo de relleno de semillas) es un algoritmo de gráficos utilizado en aplicaciones de gráficos de computadora. Se utiliza para determinar el área conectada que se puede llegar a partir de un píxel dado en un mapa de bits. El algoritmo se implementa típicamente utilizando recursión y se utiliza en aplicaciones de relleno de color, como en aplicaciones de pintura y retoque fotográfico.
 
 <p align="center">
 	<a href="#about">About</a> •
@@ -132,14 +123,5 @@ At 42 School, it is expected that almost every project is written in accordance 
 - You can't declare more than 5 variables per function
 - ...
 ```
-
-* [42 Norms](https://github.com/jotavare/jotavare/blob/main/42/pdf/en_norm.pdf) - Information about 42 code norms. `PDF`
-* [Norminette](https://github.com/42School/norminette) - Tool by 42, to respect the code norm. `GitHub`
-* [42 Header](https://github.com/42Paris/42header) - 42 header for Vim. `GitHub`
-
-## LICENSE
-<p>
-This work is published under the terms of <a href="https://github.com/jotavare/jotavare/blob/main/LICENSE">42 Unlicense</a>.
-</p>
 
 

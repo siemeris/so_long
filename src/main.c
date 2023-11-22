@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 16:24:55 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:54:36 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,19 @@
 int	close_window(int keycode, t_data *prog)
 {
 	if (keycode == 53)
+	{
 		mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		//LIBERAMOS MEMORIA ---> MEJORAR
+		// 9. Que no haya memory leaks
+		// liberar todas las imagenes que he cargado, 
+		//destruir la ventana 
+		//y liberar el juego 
+		// free(prog->mlx_ptr);
+		// free(prog->win_ptr);
+		// free(prog->img);
+		// free(prog->map_read);
+		exit (0);
+	}
 	return (0);
 }
 
@@ -60,7 +72,7 @@ char **read_map(int fd, t_data *data)
 // 4. Que el mapa tenga al menos un jugador (P)
 // 5. Que el mapa tenga al menos un muro alrededor (1)
 // 6. Que el mapa tenga al menos un camino válido (0)
-// 7. Que la extensión del archivo del mapa sea .ber 
+
 int check_map(t_data *data)
 {
 	t_check_map	check;
@@ -106,7 +118,10 @@ int check_map(t_data *data)
 			else if (data->map_read[check.h][check.w] == 'P')
 			{
 				check.player++;
-				if (check.player != 1)
+				//guardamos la posicion del jugador
+				data->player_x = check.w;
+				data->player_y = check.h;
+				if (check.player > 1)
 				{
 					ft_printf("Error\nMAPA INVALIDO, MAS DE UN JUGADOR\n");
 					return (0);
@@ -132,12 +147,28 @@ int check_map(t_data *data)
 	}
 
 	//COMPROBAR CAMINO VALIDO
+	flood_fill(data, data->player_x, data->player_y);
 
 	//PRUEBA COLLECT
 	data->collect = check.collect;
 
 	ft_printf("MAPA VALIDO\n");
 	return (1);
+}
+
+int	flood_fill(t_data *data, int x, int y)
+{
+	ft_printf("Hello from flood_fill! %i %i %i %i \n", x, y, data->map_width, data->map_height);
+	return (0);
+
+	//OJO! TENEMOS QUE HACER una copia del mapa
+
+
+
+
+	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
+		return (0);
+	
 }
 
 char **check_file(char *file)
@@ -395,6 +426,8 @@ int	main(int argc, char **argv)
 	// h = 0;
 
 	//COMPROBAMOS ARGUMENTOS
+	// 7. Número de argumentos
+	// 8. Que la extensión del archivo del mapa sea .ber 
 	if (argc != 2 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);

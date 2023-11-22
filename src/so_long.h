@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 16:00:06 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:33:59 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int	go_down(t_data *prog);
 int	go_right(t_data *prog);
 int	go_left(t_data *prog);
 void run_window(t_data *data);
+int	flood_fill(t_data *data, int x, int y);
 
 #endif
