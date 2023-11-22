@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 16:03:31 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:24:55 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char **read_map(int fd, t_data *data)
 // 4. Que el mapa tenga al menos un jugador (P)
 // 5. Que el mapa tenga al menos un muro alrededor (1)
 // 6. Que el mapa tenga al menos un camino válido (0)
+// 7. Que la extensión del archivo del mapa sea .ber 
 int check_map(t_data *data)
 {
 	t_check_map	check;
@@ -394,7 +395,7 @@ int	main(int argc, char **argv)
 	// h = 0;
 
 	//COMPROBAMOS ARGUMENTOS
-	if (argc != 2)
+	if (argc != 2 || ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);
 	
