@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 10:25:49 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:52:26 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ void	put_player(int x, int y, t_data data, char *path);
 int	key_hook(int keycode, t_data *prog);
 int	ft_print_map(t_data *data);
 int	go_up(t_data *prog);
+int	go_down(t_data *prog);
+int	go_right(t_data *prog);
+int	go_left(t_data *prog);
 void run_window(t_data *data);
 
 #endif

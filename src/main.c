@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 10:25:56 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 10:52:09 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,12 @@ int	key_hook(int keycode, t_data *prog)
 	// 	close_window(prog);
 	if (keycode == UP || keycode == W)
 		go_up(prog);
-	// if (keycode == DOWN || keycode == A)
-	// 	go_down(prog);
-	// if (keycode == RIGHT || keycode == D)
-	// 	go_right(prog);
-	// if (keycode == LEFT || keycode == S)
-	// 	go_left(prog);
+	if (keycode == DOWN || keycode == A)
+	 	go_down(prog);
+	if (keycode == RIGHT || keycode == D)
+	 	go_right(prog);
+	if (keycode == LEFT || keycode == S)
+	 	go_left(prog);
 	return (0);
 }
 
@@ -179,13 +179,67 @@ int	ft_print_map(t_data *data)
 
 int	go_up(t_data *prog)
 {
-	prog->moves++;
+	
 	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
 	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
 	
+	if (prog->map_read[prog->player_y - 1][prog->player_x] == '1')
+		return (0);
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y - 1][prog->player_x] = 'P';
+	prog->moves++;
 	prog->player_y--;
+	ft_print_map(prog);
+
+	return (0);
+}
+
+int	go_down(t_data *prog)
+{
+	
+	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
+	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
+	
+	if (prog->map_read[prog->player_y + 1][prog->player_x] == '1')
+		return (0);
+	prog->map_read[prog->player_y][prog->player_x] = '0';
+	prog->map_read[prog->player_y + 1][prog->player_x] = 'P';
+	prog->moves++;
+	prog->player_y++;
+	ft_print_map(prog);
+
+	return (0);
+}
+
+int	go_right(t_data *prog)
+{
+	
+	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
+	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
+	
+	if (prog->map_read[prog->player_y][prog->player_x + 1] == '1')
+		return (0);
+	prog->map_read[prog->player_y][prog->player_x] = '0';
+	prog->map_read[prog->player_y][prog->player_x + 1] = 'P';
+	prog->moves++;
+	prog->player_x++;
+	ft_print_map(prog);
+
+	return (0);
+}
+
+int	go_left(t_data *prog)
+{
+	
+	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
+	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
+	
+	if (prog->map_read[prog->player_y][prog->player_x - 1] == '1')
+		return (0);
+	prog->map_read[prog->player_y][prog->player_x] = '0';
+	prog->map_read[prog->player_y][prog->player_x - 1] = 'P';
+	prog->moves++;
+	prog->player_x--;
 	ft_print_map(prog);
 
 	return (0);
