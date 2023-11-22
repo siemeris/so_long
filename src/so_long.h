@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 10:52:26 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:06:14 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 // 	void	*win_ptr; //puntero a la ventana
 // }		t_win;
 
+typedef struct	s_check_map {
+    size_t		w;
+	size_t		h;
+	int			collect;
+	int			exit;
+	int			player;
+	int			wall;
+}				t_check_map;
+
 typedef struct	s_data {
     void	*mlx_ptr; //puntero a la conexion con el servidor grafico
     void	*win_ptr; //puntero a la ventana
@@ -41,6 +50,7 @@ typedef struct	s_data {
     int     player_x; //posicion x del jugador
     int     player_y; //posicion y del jugador
     int     moves; //numero de movimientos del jugador
+    char   *img_path; //ruta de la imagen
 }				t_data;
 
 
@@ -48,6 +58,7 @@ typedef struct	s_data {
 # define WALL "./assets/tree50x50transparent.xpm"
 # define EXIT "./assets/exit50x50.xpm"
 # define PLAYER "./assets/merchant.xpm"
+# define PLAYERL "./assets/merchantL.xpm"
 # define COLLECT "./assets/seta.xpm"
 # define BUFFER 1000
 # define IMG_WIDTH 50
