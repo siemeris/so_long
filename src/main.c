@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 15:12:11 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:49:33 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,17 +167,17 @@ void	put_img(int x, int y, t_data data, char *path)
 	// (x * H_IMG), (y * W_IMG));
 }
 
-void	put_player(int x, int y, t_data data, char *path)
+void	put_player(int x, int y, t_data *data)
 {
-	data.img = mlx_xpm_file_to_image(data.mlx_ptr, path, &data.img_width, &data.img_height);
+	data->img = mlx_xpm_file_to_image(data->mlx_ptr, data->img_path, &data->img_width, &data->img_height);
 	//ft_printf ("img_width , img_height: %d, %d\n", data.img_width, data.img_height);
-	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img, x * IMG_WIDTH, y * IMG_HEIGHT);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img, x * IMG_WIDTH, y * IMG_HEIGHT);
 
 	// data->map->img = mlx_xpm_file_to_image(data->mlx, path, &img_w, &img_h);
 	// mlx_put_image_to_window(data->mlx, data->win, data->map->img, \
 	// (x * H_IMG), (y * W_IMG));
 
-	ft_printf("player_x, player_y en put_player: %d, %d\n", data.player_x, data.player_y);
+	ft_printf("player_x, player_y en put_player: %d, %d\n", data->player_x, data->player_y);
 }
 
 int	key_hook(int keycode, t_data *prog)
@@ -227,7 +227,7 @@ int	ft_print_map(t_data *data)
 				data->player_x = w;
 				data->player_y = h;
 				ft_printf("player_x, player_y en print map: %d, %d\n", data->player_x, data->player_y);
-			 	put_player(w, h, *data, PLAYER);
+			 	put_player(w, h, data);
 			}
 			w++;
 		}
@@ -298,6 +298,7 @@ int	go_right(t_data *prog)
 	prog->map_read[prog->player_y][prog->player_x + 1] = 'P';
 	prog->moves++;
 	prog->player_x++;
+	prog->img_path = PLAYER;
 	ft_print_map(prog);
 
 	return (0);
@@ -320,7 +321,7 @@ int	go_left(t_data *prog)
 	prog->map_read[prog->player_y][prog->player_x - 1] = 'P';
 	prog->moves++;
 	prog->player_x--;
-	// prog->img_path = PLAYERL;
+	prog->img_path = PLAYERL;
 	ft_print_map(prog);
 
 	return (0);
@@ -371,14 +372,17 @@ int	main(int argc, char **argv)
 	////CREAMOS MAPA CON LAS IMAGENES
 	ft_printf("img.map_read: %s\n", data.map_read[0]);
 
+	//INICIALIZAMOS CONTADOR DE MOVIMIENTOS y PLAYER
+	data.moves = 0;
+	data.img_path = PLAYER;
 	//CREAMOS LA VENTANA
 	// data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
 	// data.win_ptr = mlx_new_window(data.mlx_ptr, data.map_width * IMG_WIDTH, data.map_height * IMG_HEIGHT, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
 	//ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
 	run_window(&data);
 
-	//INICIALIZAMOS CONTADOR DE MOVIMIENTOS
-	data.moves = 0;
+
+
 
 	//IMAGENES
 	// while (h < data.map_height)

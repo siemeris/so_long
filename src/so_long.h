@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 15:10:37 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:43:15 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_data {
 # define WALL "./assets/tree50x50transparent.xpm"
 # define EXIT "./assets/exit50x50.xpm"
 # define PLAYER "./assets/merchant.xpm"
-# define PLAYERL "./assets/merchantL.xpm"
+# define PLAYERL "./assets/merchant_L.xpm"
 # define COLLECT "./assets/seta.xpm"
 # define BUFFER 1000
 # define IMG_WIDTH 50
@@ -79,7 +79,7 @@ char **read_map(int fd, t_data *data);
 int check_map(t_data *data);
 char **check_file(char *file);
 void	put_img(int x, int y, t_data data, char *path);
-void	put_player(int x, int y, t_data data, char *path);
+void	put_player(int x, int y, t_data *data);
 int	key_hook(int keycode, t_data *prog);
 int	ft_print_map(t_data *data);
 int	go_up(t_data *prog);
