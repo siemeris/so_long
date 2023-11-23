@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 09:18:59 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:22:06 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ int	close_window(int keycode, t_data *prog)
 	return (0);
 }
 
+int check_empty_lines(char *str)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+		{
+			j++;
+			if (str[i + 1] == '\n')
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 
 //leemos la info del archivo. MEJORA: HACERLO CON GET_NEXT_LINE
 char **read_map(int fd, t_data *data)
@@ -52,7 +72,14 @@ char **read_map(int fd, t_data *data)
 		return (0);
 	}
 	ft_printf("numbytes: %d\n", numbytes);
-	ft_printf("buffer: %s\n", buffer);
+	ft_printf("buffer: %s", buffer);
+	//comprobamos que no haya líneas en blanco
+	if (!check_empty_lines(buffer))
+	{
+		ft_printf("Error\nMAPA NO VÁLIDO. EMPTY LINES\n");
+		free(buffer);
+		return (0);
+	}
 	data->map_read = ft_split(buffer, '\n');
 	// ft_printf("data->map_read: %s\n", data->map_read[0]);
 	if (!data->map_read)
