@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 17:33:59 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:16:47 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_check_map {
 	int			exit;
 	int			player;
 	int			wall;
+    char        **map_copy;    
 }				t_check_map;
 
 typedef struct	s_data {
@@ -75,19 +76,19 @@ typedef struct	s_data {
 # define RIGHT 124
 # define D 2
 
-int	close_window(int keycode, t_data *prog);
-char **read_map(int fd, t_data *data);
-int check_map(t_data *data);
-char **check_file(char *file);
+int	    close_window(int keycode, t_data *prog);
+char    **read_map(int fd, t_data *data);
+int     check_map(t_data *data);
+char    **check_file(char *file);
 void	put_img(int x, int y, t_data data, char *path);
 void	put_player(int x, int y, t_data *data);
-int	key_hook(int keycode, t_data *prog);
-int	ft_print_map(t_data *data);
-int	go_up(t_data *prog);
-int	go_down(t_data *prog);
-int	go_right(t_data *prog);
-int	go_left(t_data *prog);
-void run_window(t_data *data);
-int	flood_fill(t_data *data, int x, int y);
+int	    key_hook(int keycode, t_data *prog);
+int	    ft_print_map(t_data *data);
+int	    go_up(t_data *prog);
+int	    go_down(t_data *prog);
+int	    go_right(t_data *prog);
+int	    go_left(t_data *prog);
+void    run_window(t_data *data);
+int	    flood_fill(t_check_map *map, size_t x, size_t y);
 
 #endif

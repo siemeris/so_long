@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/22 18:54:36 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:18:59 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,111 +65,10 @@ char **read_map(int fd, t_data *data)
 	return (data->map_read);
 }
 
-// SE DEBE COMPROBAR:
-// 1. Que el mapa sea rectangular
-// 2. Que el mapa tenga al menos un coleccionable (C)
-// 3. Que el mapa tenga al menos una salida (E)
-// 4. Que el mapa tenga al menos un jugador (P)
-// 5. Que el mapa tenga al menos un muro alrededor (1)
-// 6. Que el mapa tenga al menos un camino válido (0)
-
-int check_map(t_data *data)
-{
-	t_check_map	check;
-
-	check.w = 0;
-	check.h = 0;
-	check.player = 0;
-	check.collect = 0;
-	check.exit = 0;
-	//1. Que el mapa sea rectangular
-	data->map_height = 0;
-	data->map_width = ft_strlen(data->map_read[0]);
-	while (data->map_read[data->map_height])
-	{
-		if (ft_strlen(data->map_read[data->map_height]) != data->map_width)
-		{
-			ft_printf("Error\nMAPA INVALIDO, NO RECTANGULAR\n");
-			return (0);
-		}
-		data->map_height++;
-	}
-
-	while (check.h < data->map_height)
-	{
-		while (check.w < data->map_width)
-		{
-			if (data->map_read[check.h][check.w] != '0' && data->map_read[check.h][check.w] != '1' && data->map_read[check.h][check.w] != 'C' && data->map_read[check.h][check.w] != 'E' && data->map_read[check.h][check.w] != 'P')
-			{
-				ft_printf("Error\nMAPA INVALIDO, CARACTER INVALIDO\n");
-				return (0);
-			}
-			else if (data->map_read[check.h][check.w] == 'C')
-			 	check.collect++;
-			else if (data->map_read[check.h][check.w] == 'E')
-			{ 
-			 	check.exit++;
-				if (check.exit != 1)
-				{
-					ft_printf("Error\nMAPA INVALIDO, MAS DE UNA SALIDA\n");
-					return (0);
-				}
-			}
-			else if (data->map_read[check.h][check.w] == 'P')
-			{
-				check.player++;
-				//guardamos la posicion del jugador
-				data->player_x = check.w;
-				data->player_y = check.h;
-				if (check.player > 1)
-				{
-					ft_printf("Error\nMAPA INVALIDO, MAS DE UN JUGADOR\n");
-					return (0);
-				}
-			}
-			if (check.w == 0 || check.h == 0)
-			{
-				if (data->map_read[check.h][check.w] != '1')
-				{
-					ft_printf("Error\nMAPA INVALIDO, NO RODEADO DE MUROS\n");
-					return (0);
-				}
-			}
-			check.w++;
-		}
-		check.w = 0;
-		check.h++;
-	}
-	if (check.collect == 0 || check.exit == 0 || check.player == 0)
-	{
-		ft_printf("Error\nMAPA INVALIDO, NO HAY COLECCIONABLES, SALIDA O JUGADOR\n");
-		return (0);
-	}
-
-	//COMPROBAR CAMINO VALIDO
-	flood_fill(data, data->player_x, data->player_y);
-
-	//PRUEBA COLLECT
-	data->collect = check.collect;
-
-	ft_printf("MAPA VALIDO\n");
-	return (1);
-}
-
-int	flood_fill(t_data *data, int x, int y)
-{
-	ft_printf("Hello from flood_fill! %i %i %i %i \n", x, y, data->map_width, data->map_height);
-	return (0);
-
-	//OJO! TENEMOS QUE HACER una copia del mapa
 
 
 
 
-	if (x < 0 || x >= data->map_width || y < 0 || y >= data->map_height)
-		return (0);
-	
-}
 
 char **check_file(char *file)
 {
