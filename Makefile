@@ -6,7 +6,7 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/11/23 09:19:34 by issierra         ###   ########.fr        #
+#    Updated: 2023/11/23 11:52:14 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ H=./src/so_long.h
 
 SRC=	./src/main.c \
 		./src/check_map.c \
-		# ./src/exit.c \
-		# ./src/map_check.c \
+		./src/movements.c \
+		./src/read_map.c \
 		# ./src/player.c \
 		# ./src/check_path.c
 

@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 11:16:56 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:39:17 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,15 @@
 int	flood_fill(t_check_map *map, size_t x, size_t y)
 {
 	ft_printf("HELLO FROM FLOOD FILL map_copy0 = %s x = %d, y = %d w = %d h = %d \n", map->map_copy[0], x, y, map->w, map->h);
-
 	if (x < 0 || x >= map->w || y < 0 || y >= map->h || map->map_copy[y][x] == '1' || map->map_copy[y][x] == 'F')
         return (0);
-	
     map->map_copy[y][x] = 'F';
-
-    ft_printf("FF1)");
     flood_fill(map, x + 1, y);
-    ft_printf("FF2)");
     flood_fill(map, x - 1, y);
-    ft_printf("FF3)");
     flood_fill(map, x, y + 1);
-    ft_printf("FF4)");
     flood_fill(map, x, y - 1);
-    
     return (1);
 }
-
-
 
 int check_map(t_data *data)
 {

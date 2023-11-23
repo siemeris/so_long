@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 11:22:06 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:52:33 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,88 +30,6 @@ int	close_window(int keycode, t_data *prog)
 		exit (0);
 	}
 	return (0);
-}
-
-int check_empty_lines(char *str)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-		{
-			j++;
-			if (str[i + 1] == '\n')
-				return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-
-//leemos la info del archivo. MEJORA: HACERLO CON GET_NEXT_LINE
-char **read_map(int fd, t_data *data)
-{
-	int		numbytes;
-	char	*buffer;
-
-
-	buffer = (char *)ft_calloc(BUFFER + 1, sizeof(char));
-	if (!buffer)
-		return (0);
-	ft_printf("Hello from read_map!\n");
-	numbytes = read(fd, buffer ,BUFFER); 
-	if (numbytes < 0)
-	{
-		ft_printf("Error al leer el archivo\n");
-		free(buffer);
-		return (0);
-	}
-	ft_printf("numbytes: %d\n", numbytes);
-	ft_printf("buffer: %s", buffer);
-	//comprobamos que no haya líneas en blanco
-	if (!check_empty_lines(buffer))
-	{
-		ft_printf("Error\nMAPA NO VÁLIDO. EMPTY LINES\n");
-		free(buffer);
-		return (0);
-	}
-	data->map_read = ft_split(buffer, '\n');
-	// ft_printf("data->map_read: %s\n", data->map_read[0]);
-	if (!data->map_read)
-	{
-		ft_printf("Error al leer el archivo\n");
-		free(buffer);
-		return (0);
-	}
-	// close(fd);
-	return (data->map_read);
-}
-
-
-
-
-
-
-char **check_file(char *file)
-{
-	int		fd;
-	t_data	data;
-	// t_data	*data_ptr = NULL;
-
-	ft_printf("Hello from check_file! %s\n", file);
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	if (!read_map(fd, &data))
-	 	return (0);
-	// ft_printf("data.map_read en check file: %s\n", data.map_read[2]);
-	close(fd);
-	return (data.map_read);
 }
 
 void	put_img(int x, int y, t_data data, char *path)
@@ -195,131 +113,7 @@ int	ft_print_map(t_data *data)
 	return (0);
 }
 
-int	go_up(t_data *prog)
-{
-	
-	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
-	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
-	
-	if (prog->map_read[prog->player_y - 1][prog->player_x] == '1')
-		return (0);
-	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'E')
-	{
-		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
-		return (0);
-	
-	}
-	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'C')
-	{	
-		prog->collect--;
-		if (prog->collect == 0)
-			prog->exit=1;
-		ft_printf("collect: %d\n", prog->collect);
-	}
-	prog->map_read[prog->player_y][prog->player_x] = '0';
-	prog->map_read[prog->player_y - 1][prog->player_x] = 'P';
-	prog->moves++;
-	prog->player_y--;
-	ft_print_map(prog);
 
-	return (0);
-}
-
-int	go_down(t_data *prog)
-{
-	
-	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
-	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
-	
-	if (prog->map_read[prog->player_y + 1][prog->player_x] == '1')
-		return (0);
-	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'E')
-	{
-		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
-		return (0);
-	
-	}
-	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'C')
-	{	
-		prog->collect--;
-		if (prog->collect == 0)
-			prog->exit=1;
-		ft_printf("collect: %d\n", prog->collect);
-	}
-	prog->map_read[prog->player_y][prog->player_x] = '0';
-	prog->map_read[prog->player_y + 1][prog->player_x] = 'P';
-	prog->moves++;
-	prog->player_y++;
-	ft_print_map(prog);
-
-	return (0);
-}
-
-int	go_right(t_data *prog)
-{
-	
-	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
-	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
-	
-	if (prog->map_read[prog->player_y][prog->player_x + 1] == '1')
-		return (0);
-	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'E')
-	{
-		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
-		return (0);
-	
-	}
-	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'C')
-	{	
-		prog->collect--;
-		if (prog->collect == 0)
-			prog->exit=1;
-		ft_printf("prog->collect: %d\n", prog->collect);
-	}
-	prog->map_read[prog->player_y][prog->player_x] = '0';
-	prog->map_read[prog->player_y][prog->player_x + 1] = 'P';
-	prog->moves++;
-	prog->player_x++;
-	prog->img_path = PLAYER;
-	ft_print_map(prog);
-
-	return (0);
-}
-
-int	go_left(t_data *prog)
-{
-	
-	ft_printf("Hello from go_up! moves %i %p %p \n", prog->moves, prog->mlx_ptr, prog->win_ptr);
-	ft_printf("player_x, player_y en go_up: %d, %d\n", prog->player_x, prog->player_y);
-	
-	if (prog->map_read[prog->player_y][prog->player_x - 1] == '1')
-		return (0);
-	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'E')
-	{
-		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
-		return (0);
-	
-	}
-	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'C')
-	{	
-		prog->collect--;
-		if (prog->collect == 0)
-			prog->exit=1;
-		ft_printf("collect: %d\n", prog->collect);
-	}
-	prog->map_read[prog->player_y][prog->player_x] = '0';
-	prog->map_read[prog->player_y][prog->player_x - 1] = 'P';
-	prog->moves++;
-	prog->player_x--;
-	prog->img_path = PLAYERL;
-	ft_print_map(prog);
-
-	return (0);
-}
 
 void run_window(t_data *data)
 {
@@ -378,9 +172,6 @@ int	main(int argc, char **argv)
 	//ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
 	run_window(&data);
 
-
-
-
 	//IMAGENES
 	// while (h < data.map_height)
 	// {
@@ -409,8 +200,6 @@ int	main(int argc, char **argv)
 	// 	w = 0;
 	// 	h++;
 	// }
-
-
 
 	//RENDERIZAMOS LA VENTANA
 	mlx_loop(data.mlx_ptr); //Renderizamos la ventana
