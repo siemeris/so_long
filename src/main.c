@@ -6,30 +6,37 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 11:52:33 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:21:26 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <mlx.h>
 #include "so_long.h"
 
-int	close_window(int keycode, t_data *prog)
+// void leaks()
+// {
+// 	system("leaks -q so_long");
+// }
+
+void free_map(char **map)
 {
-	if (keycode == 53)
+	int i;
+
+	i = 0;
+	while (map[i])
 	{
-		mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
-		//LIBERAMOS MEMORIA ---> MEJORAR
-		// 9. Que no haya memory leaks
-		// liberar todas las imagenes que he cargado, 
-		//destruir la ventana 
-		//y liberar el juego 
-		// free(prog->mlx_ptr);
-		// free(prog->win_ptr);
-		// free(prog->img);
-		// free(prog->map_read);
-		exit (0);
+		free(map[i]);
+		i++;
 	}
-	return (0);
+	free(map);
+}
+
+
+int	close_window(t_data *prog)
+{
+		mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		free_map(prog->map_read);
+		exit (0);
 }
 
 void	put_img(int x, int y, t_data data, char *path)
@@ -61,8 +68,8 @@ int	key_hook(int keycode, t_data *prog)
 	ft_printf("Hello from key_hook! %i %p %p \n", keycode, prog->mlx_ptr, prog->win_ptr);
 	ft_printf("player_x, player_y en key_hook: %d, %d\n", prog->player_x, prog->player_y);
 
-	// if (keycode == ESC)
-	// 	close_window(prog);
+	if (keycode == ESC)
+	 	close_window(prog);
 	if (keycode == UP || keycode == W)
 		go_up(prog);
 	if (keycode == DOWN || keycode == A)
@@ -123,7 +130,7 @@ void run_window(t_data *data)
 	ft_print_map(data);
 	//EVENTOS
 	mlx_key_hook(data->win_ptr, key_hook, data); //Llamamos a la funcion key_hook cuando se pulse una tecla
-	mlx_hook(data->win_ptr, 2, 1L<<0, close_window, data); //Llamamos a la funcion close_window cuando se pulse la tecla ESC
+	mlx_hook(data->win_ptr, 17, 0, close_window, data); //Llamamos a la funcion close_window cuando se pulse la tecla ESC
 
 }
 
@@ -133,6 +140,7 @@ int	main(int argc, char **argv)
 	// t_win	prog;
 	t_data	data;
 
+	
 	//para las imagenes
 	// int		img_width;
 	// int		img_height;
@@ -200,6 +208,7 @@ int	main(int argc, char **argv)
 	// 	w = 0;
 	// 	h++;
 	// }
+	// atexit(leaks);
 
 	//RENDERIZAMOS LA VENTANA
 	mlx_loop(data.mlx_ptr); //Renderizamos la ventana

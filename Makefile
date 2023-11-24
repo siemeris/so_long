@@ -6,13 +6,15 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/11/23 11:52:14 by issierra         ###   ########.fr        #
+#    Updated: 2023/11/24 12:22:35 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=so_long
 # NAME_BONUS=so_long_bonus
-CC=gcc
+# CC=gcc
+# CC=gcc -g
+CC = clang -fsanitize=address -g
 CFLAGS=-Wall -Werror -Wextra
 MLX_FLAGS=-framework OpenGL -framework Appkit
 LIBFT=./libft/libft.a

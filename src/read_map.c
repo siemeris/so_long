@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:50:25 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 11:51:26 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:10:22 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char **read_map(int fd, t_data *data)
 		return (0);
 	}
 	// close(fd);
+	free(buffer);
 	return (data->map_read);
 }
 

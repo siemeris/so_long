@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:47:25 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/23 11:47:42 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:36:26 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	go_up(t_data *prog)
 	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'E')
 	{
 		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+			close_window(prog);
 		return (0);
 	
 	}
@@ -54,7 +54,7 @@ int	go_down(t_data *prog)
 	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'E')
 	{
 		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+			close_window(prog);
 		return (0);
 	
 	}
@@ -85,7 +85,7 @@ int	go_right(t_data *prog)
 	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'E')
 	{
 		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+			close_window(prog);
 		return (0);
 	
 	}
@@ -117,7 +117,7 @@ int	go_left(t_data *prog)
 	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'E')
 	{
 		if (prog->exit == 1)
-			mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+			close_window(prog);
 		return (0);
 	
 	}

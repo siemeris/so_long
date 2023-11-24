@@ -4,3 +4,9 @@
 
 # Ignore the so_long_tester file
 so_long_tester
+
+# Ignore .DS_Store files
+.DS_Store
+
+# Ignore so_long.dSYM folder
+so_long.dSYM
