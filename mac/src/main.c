@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/24 12:21:26 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:16:32 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,13 +160,14 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);
 	
+	
 	//COMPROBAMOS MAPA
 	data.map_read=check_file(argv[1]);
 	if (!data.map_read)
 		return (0);
 	if (!check_map(&data))
 	 	return (0);
-
+	
 	////CREAMOS MAPA CON LAS IMAGENES
 	ft_printf("img.map_read: %s\n", data.map_read[0]);
 

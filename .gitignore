@@ -3,7 +3,7 @@
 *.out
 
 # Ignore the so_long_tester file
-so_long_tester
+./mac/so_long_tester
 
 # Ignore .DS_Store files
 .DS_Store
