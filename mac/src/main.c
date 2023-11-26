@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/26 12:17:03 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:54:08 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,22 +137,7 @@ void run_window(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	// t_win	prog;
 	t_data	data;
-
-	
-	//para las imagenes
-	// int		img_width;
-	// int		img_height;
-	// char	*img_addr = "./assets/wooden.xpm";
-	// void	*img_ptr;
-
-	// size_t		w;
-	// size_t		h;
-
-	// w = 0;
-	// h = 0;
-
 	//COMPROBAMOS ARGUMENTOS
 	// 7. Número de argumentos
 	// 8. Que la extensión del archivo del mapa sea .ber 
@@ -160,55 +145,20 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	//ft_printf("data.map_read: %s\n", data.map_read[0]);
 	
-	
 	//COMPROBAMOS MAPA
 	data.map_read=check_file(argv[1]);
 	if (!data.map_read)
-		return (0);
+		return (ft_print_error(8));
 	if (!check_map(&data))
+	{
+		free_map(data.map_read);
 	 	return (0);
-	
-	////CREAMOS MAPA CON LAS IMAGENES
-	ft_printf("img.map_read: %s\n", data.map_read[0]);
-
+	}
 	//INICIALIZAMOS CONTADOR DE MOVIMIENTOS, PLAYER y EXIT
 	data.moves = 0;
 	data.img_path = PLAYER;
 	data.exit = 0;
-	//CREAMOS LA VENTANA
-	// data.mlx_ptr = mlx_init(); //Inicilaizamos la miniLibX y guardamos el puntero en mlx 
-	// data.win_ptr = mlx_new_window(data.mlx_ptr, data.map_width * IMG_WIDTH, data.map_height * IMG_HEIGHT, "Hello world!"); //Creamos una ventana y guardamos el puntero en mlx_win
-	//ft_printf("data.map_width, data.map_height: %d, %d\n", data.map_width, data.map_height);
 	run_window(&data);
-
-	//IMAGENES
-	// while (h < data.map_height)
-	// {
-	// 	while (w < data.map_width)
-	// 	{
-	// 		put_img(w, h, data, BACKGROUND);
-	// 		if (data.map_read[h][w] == '1')
-	// 		{
-	// 			put_img(w, h, data, WALL);
-	// 			// ft_printf("WALL y x %i %i \n", y, x);
-	// 		}
-	// 		else if (data.map_read[h][w] == 'C')
-	// 		 	put_img(w, h, data, COLLECT);
-	// 		else if (data.map_read[h][w] == 'E')
-	// 		 	put_img(w, h, data, EXIT);
-	// 		else if (data.map_read[h][w] == 'P')
-	// 		{
-	// 			//Tenemos que guardar la posicion del jugador
-	// 			data.player_x = w;
-	// 			data.player_y = h;
-	// 			ft_printf("player_x, player_y en main: %d, %d\n", data.player_x, data.player_y);
-	// 		 	put_player(w, h, data, PLAYER);
-	// 		}
-	// 		w++;
-	// 	}
-	// 	w = 0;
-	// 	h++;
-	// }
 	// atexit(leaks);
 
 	//RENDERIZAMOS LA VENTANA
