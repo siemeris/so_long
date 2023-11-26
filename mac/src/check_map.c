@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/26 10:09:43 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:50:41 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,12 @@ int check_chars(t_check_map *check, t_data *data)
 			else if (data->map_read[check->h][check->w] == 'P')
 			{
 				check->player++;
-				//guardamos la posicion del jugador
-				data->player_x = check->w;
+				data->player_x = check->w; //guardamos la posicion del jugador
 				data->player_y = check->h;
 				if (check->player > 1)
 					return (ft_print_error(5));
 			}
-			if (check->w == 0 || check->h == 0)
+			if (check->w == 0 || check->h == 0 || check->w == data->map_width - 1 || check->h == data->map_height - 1)
 			{
 				if (data->map_read[check->h][check->w] != '1')
 					return (ft_print_error(6));
@@ -124,6 +123,7 @@ int check_chars(t_check_map *check, t_data *data)
 		check->w = 0;
 		check->h++;
 	}
+	
 	return (1);
 }
 
