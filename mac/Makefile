@@ -6,7 +6,7 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/11/24 15:22:13 by issierra         ###   ########.fr        #
+#    Updated: 2023/11/26 10:09:08 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC=	./src/main.c \
 		./src/check_map.c \
 		./src/movements.c \
 		./src/read_map.c \
+		./src/errors.c \
 		# ./src/player.c \
 		# ./src/check_path.c
 

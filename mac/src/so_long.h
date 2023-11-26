@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/24 11:39:02 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:24:28 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,8 @@ int	    go_left(t_data *prog);
 void    run_window(t_data *data);
 int	    flood_fill(t_check_map *map, size_t x, size_t y);
 void    free_map(char **map);
+int     ft_print_error(int error);
+
+
 
 #endif
