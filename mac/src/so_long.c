@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/27 09:56:56 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:28:13 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	close_window(t_data *prog)
 {
 	mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	free_map(prog->map_read);
+	system("leaks -q so_long");	//ELIMINAR AL ENTREGAR
 	exit (0);
 }
 

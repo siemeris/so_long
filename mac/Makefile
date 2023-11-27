@@ -6,7 +6,7 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/11/27 10:03:31 by issierra         ###   ########.fr        #
+#    Updated: 2023/11/27 12:26:11 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ $(NAME): $(OBJ)
 	@make all -C ./libft
 	@make all -C ./mlx
 	$(CC) $(CFLAGS) $(OBJ) -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJ) -L ../LeakSanitizer/LeakSanitizer -llsan -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+#	$(CC) $(CFLAGS) $(OBJ) -g3 -fsanitize=address -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
+
 
 # $(NAME_BONUS): $(OBJ_BONUS)
 # 	@make all -C ./libft
