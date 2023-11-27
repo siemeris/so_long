@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/26 10:24:28 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:44:04 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,7 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
-// # include <stdio.h> //PARA PRINTF. BORRAR 
 #include <fcntl.h> //PARA OPEN. BORRAR
-
-// typedef struct s_win
-// {
-// 	void	*mlx_ptr; //puntero a la conexion con el servidor grafico
-// 	void	*win_ptr; //puntero a la ventana
-// }		t_win;
 
 typedef struct	s_check_map {
     size_t		w;

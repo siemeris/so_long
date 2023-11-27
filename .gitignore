@@ -10,3 +10,6 @@
 
 # Ignore so_long.dSYM folder
 so_long.dSYM
+
+# Ignore linux folder
+./linux

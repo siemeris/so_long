@@ -6,7 +6,7 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/11/26 10:09:08 by issierra         ###   ########.fr        #
+#    Updated: 2023/11/27 10:03:31 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ MLX=./mlx/libmlx.a
 H=./src/so_long.h
 # H_BONUS=./src_bonus/so_long_bonus.h
 
-SRC=	./src/main.c \
+SRC=	./src/so_long.c \
 		./src/check_map.c \
-		./src/movements.c \
 		./src/read_map.c \
+		./src/render.c \
+		./src/movements.c \
 		./src/errors.c \
-		# ./src/player.c \
 		# ./src/check_path.c
 
 OBJ=$(SRC:.c=.o)

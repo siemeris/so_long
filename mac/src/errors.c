@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 10:09:22 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/26 15:40:02 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/27 08:36:38 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_print_error(int error)
 {
 	if (error == 8)
 		ft_printf("Error al leer el archivo\n");
+	else if (error == 9)
+		ft_printf("Error\nMAPA NO VÁLIDO. EMPTY LINES\n");
 	else if (error == 1)
 		ft_printf("Error\nMAPA INVALIDO, NO RECTANGULAR\n");
 	else if (error == 2)
@@ -31,6 +33,5 @@ NO HAY COLECCIONABLES, SALIDA O JUGADOR\n");
 		ft_printf("Error\nMAPA INVALIDO, NO RODEADO DE MUROS\n");
 	else if (error == 7)
 		ft_printf("Error\nMAPA INVALIDO, CAMINO NO VALIDO\n");
-	
 	return (0);
 }
