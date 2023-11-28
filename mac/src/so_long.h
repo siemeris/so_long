@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/27 10:46:34 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:01:27 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ typedef struct	s_check_map {
 typedef struct	s_data {
     void	*mlx_ptr; //puntero a la conexion con el servidor grafico
     void	*win_ptr; //puntero a la ventana
-	void	*img; //puntero a la imagen
-	char	*addr; //puntero al primer byte de la imagen en la memoria
-	int		bits_per_pixel; //numero de bits usados para representar un pixel en la memoria
-	int		line_length; //longitud de una linea de pixeles en bytes
-	int		endian; //especifica el orden de los bytes de un pixel en la memoria
+	// void	*img; //puntero a la imagen
+	// char	*addr; //puntero al primer byte de la imagen en la memoria
+	// int		bits_per_pixel; //numero de bits usados para representar un pixel en la memoria
+	// int		line_length; //longitud de una linea de pixeles en bytes
+	// int		endian; //especifica el orden de los bytes de un pixel en la memoria
+    void	*background;
+	void	*player;
+    void    *playerL;
+    void    *wall;
+	void	*img_collect;
+	void	*img_exit;
     int		img_width; //ancho de la imagen
     int		img_height; //alto de la imagen
     char    **map_read; //mapa leido del fichero
@@ -73,8 +79,8 @@ int	    close_window(t_data *prog);
 char    **read_map(int fd, t_data *data);
 int     check_map(t_data *data);
 char    **check_file(char *file);
-void	put_img(int x, int y, t_data data, char *path);
-void	put_player(int x, int y, t_data *data);
+void	put_img(int x, int y, t_data data, void *img);
+void	put_player(int x, int y, t_data *data, void *img);
 int	    key_hook(int keycode, t_data *prog);
 int	    ft_print_map(t_data *data);
 int	    go_up(t_data *prog);
@@ -85,6 +91,7 @@ void    run_window(t_data *data);
 int	    flood_fill(t_check_map *map, size_t x, size_t y);
 void    free_map(char **map);
 int     ft_print_error(int error);
+void    init_xpm_file_to_image(t_data *data);
 
 
 

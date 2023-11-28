@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/27 12:28:13 by issierra         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:59:25 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	run_window(t_data *data)
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->map_width * IMG_WIDTH, \
 	data->map_height * IMG_HEIGHT, "Hello world!");
+	init_xpm_file_to_image(data);
 	ft_print_map(data);
 	mlx_key_hook(data->win_ptr, key_hook, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
