@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 11:59:55 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:10:11 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	close_window(t_data *prog)
 	mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	free_map(prog->map_read);
 	system("leaks -q so_long");	//ELIMINAR AL ENTREGAR
+
 	exit (0);
 }
 
@@ -84,5 +85,7 @@ int	main(int argc, char **argv)
 	data.img_path = PLAYER;
 	data.exit = 0;
 	run_window(&data);
+
+	mlx_loop_hook(data.mlx_ptr, (int (*)())update_animation, &data);
 	mlx_loop(data.mlx_ptr);
 }

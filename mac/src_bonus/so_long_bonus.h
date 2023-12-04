@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 11:19:00 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:10:04 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_check_map {
 	int			collect;
 	int			exit;
 	int			player;
+    int         monster;
 	int			wall;
     char        **map_copy;    
 }				t_check_map;
@@ -47,6 +48,8 @@ typedef struct	s_data {
     char   *img_path; //ruta de la imagen
     int     collect; //numero de coleccionables
     int     exit; //flag que habilita la salida
+    int     monster_x; //posicion x del monstruo
+    int     monster_y; //posicion y del monstruo
 }				t_data;
 
 
@@ -56,6 +59,7 @@ typedef struct	s_data {
 # define PLAYER "./assets/merchant.xpm"
 # define PLAYERL "./assets/merchant_L.xpm"
 # define COLLECT "./assets/seta.xpm"
+# define MONSTER "./assets/monster.xpm"
 # define BUFFER 1000
 # define IMG_WIDTH 50
 # define IMG_HEIGHT 50
@@ -86,7 +90,7 @@ int	    flood_fill(t_check_map *map, size_t x, size_t y);
 void    free_map(char **map);
 int     ft_print_error(int error);
 void    movements_on_screen(t_data *data);
-
+int     update_animation(t_data *data);
 
 
 #endif

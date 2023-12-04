@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:47:25 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 12:02:06 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:44:18 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,19 @@ int	go_up(t_data *prog)
 		if (prog->collect == 0)
 			prog->exit = 1;
 	}
+	if (prog->map_read[prog->player_y - 1][prog->player_x] == 'M')
+	{
+		ft_printf("You have been eaten by a monster!\n");
+		close_window(prog);
+		return (0);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y - 1][prog->player_x] = 'P';
 	prog->moves++;
 	ft_printf("Movements: %i\n", prog->moves);
 	prog->player_y--;
 	ft_print_map(prog);
-	// movements_on_screen(prog);
+
 	return (0);
 }
 
@@ -54,13 +60,19 @@ int	go_down(t_data *prog)
 		if (prog->collect == 0)
 			prog->exit = 1;
 	}
+	if (prog->map_read[prog->player_y + 1][prog->player_x] == 'M')
+	{
+		ft_printf("You have been eaten by a monster!\n");
+		close_window(prog);
+		return (0);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y + 1][prog->player_x] = 'P';
 	prog->moves++;
 	ft_printf("Movements: %i\n", prog->moves);
 	prog->player_y++;
 	ft_print_map(prog);
-	// movements_on_screen(prog);
+
 
 	return (0);
 }
@@ -81,6 +93,12 @@ int	go_right(t_data *prog)
 		if (prog->collect == 0)
 			prog->exit = 1;
 	}
+	if (prog->map_read[prog->player_y][prog->player_x + 1] == 'M')
+	{
+		ft_printf("You have been eaten by a monster!\n");
+		close_window(prog);
+		return (0);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y][prog->player_x + 1] = 'P';
 	prog->moves++;
@@ -88,7 +106,7 @@ int	go_right(t_data *prog)
 	prog->player_x++;
 	prog->img_path = PLAYER;
 	ft_print_map(prog);
-	// movements_on_screen(prog);
+
 
 	return (0);
 }
@@ -99,6 +117,8 @@ int	go_left(t_data *prog)
 		return (0);
 	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'E')
 	{
+		// movements_on_screen(prog);
+
 		if (prog->exit == 1)
 			close_window(prog);
 		return (0);
@@ -109,6 +129,12 @@ int	go_left(t_data *prog)
 		if (prog->collect == 0)
 			prog->exit = 1;
 	}
+	if (prog->map_read[prog->player_y][prog->player_x - 1] == 'M')
+	{
+		ft_printf("You have been eaten by a monster!\n");
+		close_window(prog);
+		return (0);
+	}
 	prog->map_read[prog->player_y][prog->player_x] = '0';
 	prog->map_read[prog->player_y][prog->player_x - 1] = 'P';
 	prog->moves++;
@@ -116,7 +142,7 @@ int	go_left(t_data *prog)
 	prog->player_x--;
 	prog->img_path = PLAYERL;
 	ft_print_map(prog);
-	// movements_on_screen(prog);
+
 
 	return (0);
 }

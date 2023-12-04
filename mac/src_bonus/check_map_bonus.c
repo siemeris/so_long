@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 11:10:47 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:08:23 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	check_chars_aux(t_check_map *check, t_data *data)
 		&& data->map_read[check->h][check->w] != '1'
 		&& data->map_read[check->h][check->w] != 'C'
 		&& data->map_read[check->h][check->w] != 'E'
-		&& data->map_read[check->h][check->w] != 'P')
+		&& data->map_read[check->h][check->w] != 'P'
+		&& data->map_read[check->h][check->w] != 'M')
 		return (ft_print_error(2));
 	else if (data->map_read[check->h][check->w] == 'C')
 		check->collect++;
@@ -103,6 +104,14 @@ int	check_chars(t_check_map *check, t_data *data)
 				data->player_y = check->h;
 				if (check->player > 1)
 					return (ft_print_error(5));
+			}
+			else if (data->map_read[check->h][check->w] == 'M')
+			{
+				check->monster++;
+				data->monster_x = check->w;
+				data->monster_y = check->h;
+				if (check->monster > 1)
+					return (ft_print_error(8));
 			}
 			check->w++;
 		}
