@@ -6,17 +6,11 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/11/27 12:28:13 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:32:01 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <mlx.h>
 #include "so_long.h"
-
-// void leaks()
-// {
-// 	system("leaks -q so_long");
-// }
 
 void	free_map(char **map)
 {
@@ -35,7 +29,6 @@ int	close_window(t_data *prog)
 {
 	mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	free_map(prog->map_read);
-	system("leaks -q so_long");	//ELIMINAR AL ENTREGAR
 	exit (0);
 }
 

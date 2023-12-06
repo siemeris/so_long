@@ -6,7 +6,7 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/12/01 11:26:37 by issierra         ###   ########.fr        #
+#    Updated: 2023/12/06 10:27:11 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ OBJ=$(SRC:.c=.o)
 SRC_BONUS=	./src_bonus/so_long_bonus.c \
 			./src_bonus/read_map_bonus.c \
 			./src_bonus/check_map_bonus.c \
+			./src_bonus/check_chars_monster.c \
 			./src_bonus/render_bonus.c \
 			./src_bonus/movements_bonus.c \
 			./src_bonus/errors_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:45:43 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/04 11:43:17 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/06 09:24:36 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,36 @@ void	put_player(int x, int y, t_data *data)
 	data->img, x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
+int	ft_print_map_aux(t_data *data, size_t w, size_t h)
+{
+	put_img(w, h, *data, BACKGROUND);
+	if (data->map_read[h][w] == '1')
+		put_img(w, h, *data, WALL);
+	else if (data->map_read[h][w] == 'C')
+		put_img(w, h, *data, COLLECT);
+	else if (data->map_read[h][w] == 'E')
+		put_img(w, h, *data, EXIT);
+	else if (data->map_read[h][w] == 'P')
+		put_player(w, h, data);
+	else if (data->map_read[h][w] == 'M')
+		put_img(w, h, *data, MONSTER);
+	return (0);
+}
+
 int	ft_print_map(t_data *data)
 {
 	size_t		w;
 	size_t		h;
 
-	w = 0;
 	h = 0;
 	while (h < data->map_height)
 	{
+		w = 0;
 		while (w < data->map_width)
 		{
-			put_img(w, h, *data, BACKGROUND);
-			if (data->map_read[h][w] == '1')
-				put_img(w, h, *data, WALL);
-			else if (data->map_read[h][w] == 'C')
-				put_img(w, h, *data, COLLECT);
-			else if (data->map_read[h][w] == 'E')
-				put_img(w, h, *data, EXIT);
-			else if (data->map_read[h][w] == 'P')
-				put_player(w, h, data);
-			else if (data->map_read[h][w] == 'M')
-				put_img(w, h, *data, MONSTER);
+			ft_print_map_aux(data, w, h);
 			w++;
 		}
-		w = 0;
 		h++;
 	}
 	movements_on_screen(data);

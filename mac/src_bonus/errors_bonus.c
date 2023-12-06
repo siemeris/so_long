@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 10:09:22 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 11:11:18 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:08:59 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_print_error(int error)
 {
 	if (error == 8)
-		ft_printf("Error al leer el archivo\n");
+		ft_printf("Error\nError al leer el archivo\n");
 	else if (error == 9)
 		ft_printf("Error\nMAPA NO VÁLIDO. EMPTY LINES\n");
 	else if (error == 1)

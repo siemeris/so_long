@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/04 12:08:23 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:26:02 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,7 @@ int	check_chars(t_check_map *check, t_data *data)
 					return (ft_print_error(5));
 			}
 			else if (data->map_read[check->h][check->w] == 'M')
-			{
-				check->monster++;
-				data->monster_x = check->w;
-				data->monster_y = check->h;
-				if (check->monster > 1)
-					return (ft_print_error(8));
-			}
+				check_chars_monster(check, data);
 			check->w++;
 		}
 		check->w = 0;
