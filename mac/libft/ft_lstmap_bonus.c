@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:20:48 by issierra          #+#    #+#             */
-/*   Updated: 2023/10/01 12:45:41 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:29:42 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (!lst || !f)
 		return (NULL);
 	while (lst)
-	{	
+	{
 		content = f(lst->content);
 		newnode = ft_lstnew(content);
 		if (!newnode)
