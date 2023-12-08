@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/06 10:29:43 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/08 18:48:44 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	run_window(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->map_width * IMG_WIDTH, \
-	data->map_height * IMG_HEIGHT, "Hello world!");
+	data->map_height * IMG_HEIGHT, "Mycological Odyssey");
 	ft_print_map(data);
 	mlx_key_hook(data->win_ptr, key_hook, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
