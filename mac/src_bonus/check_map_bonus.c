@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/06 10:26:02 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:52:41 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	check_map(t_data *data)
 	}
 	if (!check_chars(check, data))
 		return (free(check), 0);
-	if (check->collect == 0 || check->exit == 0 || check->player == 0)
+	if (check->collect == 0 || check->exit == 0 || check->player == 0 || check->monster == 0 )
 		return (free(check), ft_print_error(3));
 	if (!check_path(check, data))
 	{
