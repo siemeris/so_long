@@ -6,15 +6,13 @@
 #    By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 08:44:37 by issierra          #+#    #+#              #
-#    Updated: 2023/12/06 10:27:11 by issierra         ###   ########.fr        #
+#    Updated: 2023/12/08 18:01:16 by issierra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=so_long
 NAME_BONUS=so_long_bonus
 CC=gcc
-# CC=gcc -g
-# CC = clang -fsanitize=address -g
 CFLAGS=-Wall -Werror -Wextra
 MLX_FLAGS=-framework OpenGL -framework Appkit
 LIBFT=./libft/libft.a
@@ -47,9 +45,6 @@ $(NAME): $(OBJ)
 	@make all -C ./libft
 	@make all -C ./mlx
 	$(CC) $(CFLAGS) $(OBJ) -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJ) -L ../LeakSanitizer/LeakSanitizer -llsan -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJ) -g3 -fsanitize=address -I $(H) $(MLX) $(MLX_FLAGS) $(LIBFT) -o $(NAME)
-
 
 $(NAME_BONUS): $(OBJ_BONUS)
 	@make all -C ./libft
