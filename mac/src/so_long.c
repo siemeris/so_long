@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 13:42:49 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:21:01 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	close_window(t_data *prog)
 {
 	if (prog->exit == 1)
 		ft_printf("YOU WON!\n");
+	else
+		ft_printf("BYE!\n");
 	mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	free_map(prog->map_read);
 	exit (0);

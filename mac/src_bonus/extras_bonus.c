@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:12:36 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 13:17:39 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:19:37 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	update_animation(t_data *data)
 		|| data->map_read[data->monster_y + 1][data->monster_x] == 'P'
 		|| data->map_read[data->monster_y - 1][data->monster_x] == 'P')
 	{
-		ft_printf("You have been eaten by a monster!\n");
+		ft_printf("YOU HAVE BEEN EATEN BY A MONSTER!\n");
 		close_window(data);
 	}
 	return (0);
