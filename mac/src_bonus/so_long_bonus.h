@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/06 10:24:36 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:15:03 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int		ft_print_error(int error);
 void	movements_on_screen(t_data *data);
 int		update_animation(t_data *data);
 int		check_chars_monster(t_check_map *check, t_data *data);
+int		check_zero_chars(t_check_map *check);
 
 #endif

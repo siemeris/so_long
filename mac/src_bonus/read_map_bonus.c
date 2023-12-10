@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:50:25 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/01 11:10:35 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:49:28 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**read_map(int fd, t_data *data)
 	if (!buffer)
 		return (0);
 	numbytes = read(fd, buffer, BUFFER);
-	if (numbytes < 0)
+	if (numbytes <= 0)
 		return (free_buffer(buffer, 8));
 	if (!check_empty_lines(buffer))
 		return (free_buffer(buffer, 9));
@@ -65,7 +65,6 @@ char	**check_file(char *file)
 	int		fd;
 	t_data	data;
 
-	ft_printf("Hello from check_file! %s\n", file);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (0);

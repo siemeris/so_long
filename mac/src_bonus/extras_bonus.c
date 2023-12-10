@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 11:12:36 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/08 18:09:36 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:17:39 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,12 @@ int	update_animation(t_data *data)
 		close_window(data);
 	}
 	return (0);
+}
+
+int	check_zero_chars(t_check_map *check)
+{
+	if (check->collect == 0 || check->exit == 0
+		|| check->player == 0 || check->monster == 0)
+		return (0);
+	return (1);
 }

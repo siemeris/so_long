@@ -13,3 +13,6 @@ so_long.dSYM
 
 # Ignore linux folder
 ./linux
+
+# Ignore so_long_leaktester
+./so_long_leaktester

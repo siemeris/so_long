@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/08 18:48:44 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:46:37 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nINVALID ARGUMENT\n"));
 	data.map_read = check_file(argv[1]);
 	if (!data.map_read)
-		return (ft_print_error(8));
+		return (0);
 	if (!check_map(&data))
 	{
 		free_map(data.map_read);
