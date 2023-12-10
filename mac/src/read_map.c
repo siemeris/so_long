@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:50:25 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 12:49:15 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 14:06:01 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ char	**check_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_print_error(11);
 		return (0);
+	}
 	if (!read_map(fd, &data))
 		return (0);
 	close(fd);

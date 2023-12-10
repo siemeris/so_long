@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 10:09:22 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 12:50:44 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:58:44 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ NO HAY COLECCIONABLES, SALIDA O JUGADOR\n");
 		ft_printf("Error\nMAPA INVALIDO, NO RODEADO DE MUROS\n");
 	else if (error == 7)
 		ft_printf("Error\nMAPA INVALIDO, CAMINO NO VALIDO\n");
+	else if (error == 11)
+		ft_printf("Error\nFICHERO NO ENCONTRADO\n");
 	return (0);
 }
