@@ -6,19 +6,11 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 13:45:26 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:48:36 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-// SE DEBE COMPROBAR:
-// 1. Que el mapa sea rectangular
-// 2. Que el mapa tenga al menos un coleccionable (C)
-// 3. Que el mapa tenga al menos una salida (E)
-// 4. Que el mapa tenga al menos un jugador (P)
-// 5. Que el mapa tenga al menos un muro alrededor (1)
-// 6. Que el mapa tenga al menos un camino válido (0)
 
 int	flood_fill(t_check_map *map, size_t x, size_t y)
 {

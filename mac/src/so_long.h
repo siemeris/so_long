@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:40:19 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/06 09:10:55 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:51:03 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-
 # include <fcntl.h>
 
 typedef struct s_check_map {
