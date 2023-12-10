@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 09:17:04 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 13:13:23 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:45:26 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,5 @@ int	check_map(t_data *data)
 		return (0);
 	}
 	data->collect = check->collect;
-	return (free(check), free_map(check->map_copy), ft_printf("MAPA VALIDO\n"));
+	return (free(check), free_map(check->map_copy), ft_printf("GAME ON\n"));
 }

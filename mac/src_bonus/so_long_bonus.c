@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 12:46:37 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:38:01 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	free_map(char **map)
 
 int	close_window(t_data *prog)
 {
+	if (prog->exit == 1)
+		ft_printf("YOU WON!\n");
 	mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
 	free_map(prog->map_read);
 	exit (0);
