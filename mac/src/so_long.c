@@ -6,7 +6,7 @@
 /*   By: issierra <issierra@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:12:18 by issierra          #+#    #+#             */
-/*   Updated: 2023/12/10 16:21:01 by issierra         ###   ########.fr       */
+/*   Updated: 2023/12/10 17:56:22 by issierra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ int	close_window(t_data *prog)
 int	key_hook(int keycode, t_data *prog)
 {
 	if (keycode == ESC)
-		close_window(prog);
+	{
+		ft_printf("BYE!\n");
+		mlx_destroy_window(prog->mlx_ptr, prog->win_ptr);
+		free_map(prog->map_read);
+		exit (0);
+	}
 	if (keycode == UP || keycode == W)
 		go_up(prog);
 	if (keycode == DOWN || keycode == A)
