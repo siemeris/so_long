@@ -75,6 +75,8 @@ The project structure is organized as follows:
 
 ## Screenshots
 
+![game](https://github.com/siemeris/so_long/blob/main/screenshot.png)
+![bonus](https://github.com/siemeris/so_long/blob/main/screenshot_bonus.png)
 
 ## Project Development Rules:
 
