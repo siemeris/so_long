@@ -2,9 +2,6 @@
 
 This is the So_Long project from the 42 school curriculum. So_Long is a simple 2D game where the player controls a character that must collect items and avoid enemies to win the game. The game is developed in a graphical environment using the MinilibX library.
 
-The so_long project is a 2D game where the player navigates through a maze-like environment, avoiding obstacles and enemies to reach a goal.
-It is created using the MiniLibX library and requires students to implement game mechanics, file input/output, and basic graphics.
-
 ## Table of Contents
 
 1. [System Requirements](#system-requirements)
