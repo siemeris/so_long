@@ -2,6 +2,8 @@
 
 This is the So_Long project from the 42 school curriculum. So_Long is a simple 2D game where the player controls a character that must collect items and avoid enemies to win the game. The game is developed in a graphical environment using the MinilibX library.
 
+![bonus](https://github.com/siemeris/so_long/blob/main/screenshot_bonus.png)
+
 ## Table of Contents
 
 1. [System Requirements](#system-requirements)
@@ -10,8 +12,7 @@ This is the So_Long project from the 42 school curriculum. So_Long is a simple 2
 4. [Usage](#usage)
 5. [Game Rules](#game-rules)
 6. [Project Structure](#project-structure)
-7. [Screenshots](#screenshots)
-8. [Project Development Rules](#project-development-rules)
+7. [Project Development Rules](#project-development-rules)
 
 
 ## System Requirements
@@ -72,10 +73,6 @@ The project structure is organized as follows:
 - `src_bonus/`: Source code of the project, extra part.
 - `maps/`: Example maps for the game.
 - `assets/`: Images used in the game.
-
-## Screenshots
-
-![bonus](https://github.com/siemeris/so_long/blob/main/screenshot_bonus.png)
 
 ## Project Development Rules:
 
